@@ -15,25 +15,12 @@ function computerPlay() {
 
 let countPlayer = 0;
 let countComputer = 0;
-
-// for (let i = 0; i < 5; i++) {
-//     let result = playRound()
-//     console.log(result)
-//     if (i === 4) {
-//         if (countPlayer > countComputer) {
-//             console.log("You win the game")
-//         } else if (countPlayer < countComputer) {
-//             console.log("You lose the game") 
-//         } else {
-//             console.log("This game is a tie")
-//         }
-//         console.log(countPlayer, countComputer)
-//     }
-
+let gameIsOver = 0;
 let playerSelection;
+
 function playRound() {
-    let computerSelection = computerPlay()
-    console.log(playerSelection)
+    let computerSelection = computerPlay();
+    
     if (playerSelection === computerSelection) {
         resultDisplay.textContent = "It's a tie"
     } else if (playerSelection === "scissors" && computerSelection === "paper") {
@@ -48,14 +35,29 @@ function playRound() {
     } else {
         countComputer++
         resultDisplay.textContent = "You lose :("
-    }
+    };
+
+    if (countPlayer >= 5) {
+        resultDisplay.textContent = 'You won the game!';
+        reloadDisplay.textContent = 'Click a weapon to play again';
+        gameIsOver++;
+    } else if (countComputer >= 5) {
+        resultDisplay.textContent = 'You lost the game 😔';
+        reloadDisplay.textContent = 'Click a weapon to play again';
+        gameIsOver++;
+    };
+
+    if (gameIsOver == 2) {
+        location.reload()
+    };
 
     userCountDisplay.textContent = "You: " + countPlayer;
     computerCountDisplay.textContent = "Computer: " + countComputer;
 }
 
-// User Interface
 
+
+// User Interface
 const rockDisplay = document.querySelector('.main__choice-rock');
 const paperDisplay = document.querySelector('.main__choice-paper');
 const scissorsDisplay = document.querySelector('.main__choice-scissors');
@@ -71,24 +73,15 @@ const userCountDisplay = document.querySelector('.main__usercount');
 const computerCountDisplay = document.querySelector('.main__computercount');
 
 const resultDisplay = document.getElementById('result-display');
+const reloadDisplay = document.getElementById('reload-display')
 
-rockDisplay.addEventListener('click', () => {
-    playerSelection = "rock";
+function playGame(weapon) {
+    playerSelection = weapon;
     playRound();
-    userDisplay.innerHTML = "";
-    userChoiceDisplay.innerHTML = '<img src="./assets/rockimg.png" alt="Rock Illustration">';
-});
+    userDisplay.innerHTML = '';
+    userChoiceDisplay.innerHTML = `<img src="./assets/${weapon}img.png" alt="${weapon} Illustration">`;
+};
 
-paperDisplay.addEventListener('click', () => {
-    playerSelection = "paper";
-    playRound();
-    userDisplay.innerHTML = "";
-    userChoiceDisplay.innerHTML = '<img src="./assets/paperimg.png" alt="Paper Illustration">';
-});
-
-scissorsDisplay.addEventListener('click', () => {
-    playerSelection = "scissors";
-    playRound();
-    userDisplay.innerHTML = "";
-    userChoiceDisplay.innerHTML = '<img src="./assets/scissorsimg.png" alt="Scissors Illustration">';
-});
+rockDisplay.addEventListener('click', () => playGame('rock'));
+paperDisplay.addEventListener('click', () => playGame('paper'));
+scissorsDisplay.addEventListener('click', () => playGame('scissors'));

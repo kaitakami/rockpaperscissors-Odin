@@ -120,5 +120,25 @@ body {
 	transform: rotate(360deg) scale(1.2);
   }
 
+  /* MEDIA QUERIES */
+
+  @media screen and (max-width: 615px) {
+	.main__text {
+		margin: 40px 0;
+	}
+
+	.main__choice-options{
+		gap: 1rem;
+	}
+
+	.main__img {
+		width: 80px;
+	}
+
+	.main__count {
+		margin: 1.5rem 0;
+	}
+  }
+
 
 
