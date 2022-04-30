@@ -1,13 +1,63 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Rock Paper Scissors</title>
+    <link rel="stylesheet" href="./styles.css" />
+    <!-- FONTS -->
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;700;900&family=Source+Code+Pro:wght@300;400&display=swap"
+        rel="stylesheet" />
+    <!-- FONTAWESOME -->
+    <script src="https://kit.fontawesome.com/4c536a6bd5.js" crossorigin="anonymous"></script>
 </head>
+
 <body>
-    
+    <header id="header">
+        <h1 class="header__title">Rock Paper Scissors</h1>
+        <h3 class="header__subtitle">Minnie Mouse Version</>
+    </header>
+    <main id="main">
+        <div class="container">
+            <h3 id="result-display" class="main__text main-h3">Choose your weapon!</h3>
+            <p id="" class="main__text">First to reach 5 wins</p>
+            <div class="main__choice">
+                <div class="main__userchoice">
+                    <span id="user-question-mark">❔</span>
+                    <div id="user-result"></div>
+                    <p class="main__count main__usercount">You: 0</p>
+                </div>
+                <div class="main__computerchoice">
+                    <span id="computer-question-mark">❔</span>
+                    <div id="computer-result"></div>
+                    <p class="main__count main__computercount">Computer: 0</p>
+                </div>
+            </div>
+            <div class="main__choice-options">
+                <img src="./assets/rockimg.png" alt="rock illustration" class="main__img main__choice-rock" />
+                <img src="./assets/paperimg.png" alt="paper illustration" class="main__img main__choice-paper" />
+                <img src="./assets/scissorsimg.png" alt="scissors illustration"
+                    class="main__img main__choice-scissors" />
+            </div>
+        </div>
+    </main>
+
+    <footer class="footer">
+        <p>
+            Copyright ©
+            <script>
+                document.write(new Date().getFullYear());
+            </script>
+            Kai Takami
+        </p>
+        <a href="https://github.com/kaitakami" target="_blank">
+            <i class="fab fa-github"></i></a>
+    </footer>
     <script src="./app.js"></script>
 </body>
 </html>
